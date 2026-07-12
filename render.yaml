@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: zenith-zone-gym
+    runtime: static
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: SITE_URL
+        sync: false

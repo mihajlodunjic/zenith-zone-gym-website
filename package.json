@@ -1,0 +1,21 @@
+{
+  "name": "zenith-zone-gym-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static production site for Zenith Zone Gym.",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && npm run preview",
+    "lint": "node scripts/lint.mjs",
+    "preview": "node scripts/preview.mjs",
+    "test": "node scripts/test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/barlow": "5.2.8",
+    "@fontsource/barlow-condensed": "5.2.8"
+  }
+}
