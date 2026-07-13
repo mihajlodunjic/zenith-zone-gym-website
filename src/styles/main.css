@@ -1393,6 +1393,256 @@ html[data-menu-open] .menu-toggle-lines::after {
   }
 }
 
+@media (min-width: 901px) and (max-width: 1080px) {
+  .hero-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    row-gap: 0;
+  }
+
+  .hero-rail,
+  .hero-copy,
+  .hero-system {
+    grid-row: 1;
+  }
+
+  .hero-rail {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+    min-height: 100%;
+  }
+
+  .hero-copy {
+    grid-column: 3 / span 6;
+    align-self: start;
+  }
+
+  .hero-copy h1 {
+    max-width: 8ch;
+  }
+
+  .hero-system {
+    grid-column: 9 / span 4;
+    align-self: end;
+    min-height: 360px;
+  }
+
+  .rail-note {
+    max-width: 10ch;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    padding-top: clamp(36px, 7vw, 52px);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+    padding-bottom: clamp(48px, 9vw, 72px);
+  }
+
+  .hero-rail,
+  .hero-copy {
+    display: contents;
+  }
+
+  .hero-rail,
+  .hero-copy,
+  .hero-system {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .rail-label,
+  .hero-grid .eyebrow,
+  .hero-grid .hero-copy h1,
+  .hero-grid .hero-intro,
+  .hero-grid .hero-actions,
+  .rail-note,
+  .hero-system {
+    grid-column: 1;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .rail-label {
+    order: 1;
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  .hero-grid .eyebrow {
+    order: 2;
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  .hero-grid .hero-copy h1 {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 0;
+    font-size: clamp(3rem, 12vw, 4rem);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    text-wrap: balance;
+  }
+
+  .hero-grid .hero-intro {
+    order: 4;
+    width: 100%;
+    max-width: 100%;
+    margin: 4px 0 0;
+    font-size: clamp(1.0625rem, 4vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  .hero-grid .hero-actions {
+    order: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin: 8px 0 0;
+  }
+
+  .hero-grid .hero-actions .button-primary {
+    width: 100%;
+  }
+
+  .rail-note {
+    order: 6;
+    position: static;
+    margin: 12px 0 0;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 0.94;
+    max-width: 8ch;
+  }
+
+  .hero-system {
+    order: 7;
+    align-self: start;
+    position: relative;
+    min-height: 0;
+    height: auto;
+    margin-top: 8px;
+    padding: 20px;
+    gap: 18px;
+    overflow: hidden;
+  }
+
+  .hero-system::before {
+    transform: translateX(10px);
+  }
+
+  .hero-system-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-bottom: 14px;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .hero-system-grid {
+    align-content: start;
+    height: auto;
+    padding-top: 8px;
+  }
+
+  .hero-system-word {
+    right: 0;
+    bottom: 52px;
+    font-size: clamp(3rem, 16vw, 4.8rem);
+    opacity: 0.55;
+  }
+
+  .hero-stages {
+    gap: 12px;
+  }
+
+  .hero-stages li {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .hero-stages span {
+    font-size: 1.7rem;
+  }
+
+  .hero-stages strong {
+    line-height: 1.35;
+  }
+
+  .hero-gear {
+    right: 10px;
+    bottom: 10px;
+    width: 88px;
+    height: 88px;
+    color: rgba(255, 255, 255, 0.28);
+    z-index: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-grid {
+    row-gap: 14px;
+  }
+
+  .rail-label,
+  .hero-grid .eyebrow {
+    font-size: 0.68rem;
+    line-height: 1.45;
+  }
+
+  .hero-grid .hero-copy h1 {
+    font-size: clamp(3rem, 12vw, 3.7rem);
+    line-height: 0.96;
+  }
+
+  .hero-grid .hero-intro {
+    line-height: 1.46;
+  }
+
+  .hero-grid .hero-actions {
+    gap: 16px;
+  }
+
+  .rail-note {
+    font-size: clamp(1.75rem, 9vw, 2.25rem);
+    max-width: 7ch;
+  }
+
+  .hero-system {
+    padding: 18px;
+  }
+
+  .hero-system-word {
+    bottom: 62px;
+    font-size: clamp(2.8rem, 18vw, 4rem);
+  }
+
+  .hero-stages li {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .hero-stages span {
+    font-size: 1.55rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
