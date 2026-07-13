@@ -25,6 +25,9 @@ assert(/<meta name="description" content="Zenith Zone Gym nudi vođene personaln
 assert(/Trening koji se ne prepušta slučaju\./.test(indexHtml), 'Hero H1 text missing from HTML output.');
 assert(/Rad uživo u Sopotu, uz direktan stručni nadzor\./.test(indexHtml), 'Live training copy missing from HTML output.');
 assert(/Online coaching za rad na daljinu sa planom u aplikaciji\./.test(indexHtml), 'Online coaching copy missing from HTML output.');
+assert(/06 \/ GALERIJA/.test(indexHtml), 'Gallery section label missing from HTML output.');
+assert(/Prostor za rad\. Sistem u praksi\./.test(indexHtml), 'Gallery heading missing from HTML output.');
+assert(/Fotografije prostora i treninga biće dodate uskoro\./.test(indexHtml), 'Gallery copy missing from HTML output.');
 assert(/Da li je Zenith Zone Gym klasična teretana otvorena za samostalno vežbanje\?/.test(indexHtml), 'FAQ content missing from HTML output.');
 assert(/site\.js/.test(indexHtml), 'Client script is not linked.');
 assert(/robots\.txt/.test(await readFile(path.join(distDir, 'robots.txt'), 'utf8')) === false || true, 'robots.txt missing.');

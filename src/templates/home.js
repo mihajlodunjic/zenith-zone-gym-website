@@ -65,6 +65,57 @@ function renderNavLinks() {
     .join('');
 }
 
+function renderFooterNavLinks() {
+  return site.navItems
+    .filter(({ includeInFooter = true }) => includeInFooter)
+    .map(({ href, label }) => `<a href="${href}">${label}</a>`)
+    .join('');
+}
+
+function renderGallerySlides() {
+  return site.gallery.items
+    .map((item, index) => {
+      const position = String(index + 1).padStart(2, '0');
+
+      if (item.imagePath) {
+        return `
+      <article
+        class="gallery-slide"
+        data-gallery-slide
+        role="group"
+        aria-roledescription="slide"
+        aria-label="${position} od ${site.gallery.items.length}"
+      >
+        <figure class="gallery-card gallery-card-image">
+          <img src="${item.imagePath}" alt="${item.alt}" loading="lazy">
+          ${item.caption ? `<figcaption class="gallery-card-caption">${item.caption}</figcaption>` : ''}
+        </figure>
+      </article>`;
+      }
+
+      return `
+      <article
+        class="gallery-slide"
+        data-gallery-slide
+        role="group"
+        aria-roledescription="slide"
+        aria-label="${position} od ${site.gallery.items.length}"
+      >
+        <div class="gallery-card gallery-card-placeholder">
+          <div class="gallery-card-top">
+            <span>${item.label}</span>
+            <span>${position}</span>
+          </div>
+          <div class="gallery-card-body">
+            <p class="gallery-card-status">${item.placeholder}</p>
+            <p class="gallery-card-note">Privremeno mesto za budući prikaz prostora ili treninga.</p>
+          </div>
+        </div>
+      </article>`;
+    })
+    .join('');
+}
+
 export function renderHome(currentYear) {
   return `
   <a class="skip-link" href="#main-content">Pređi na glavni sadržaj</a>
@@ -262,6 +313,42 @@ export function renderHome(currentYear) {
         </div>
       </section>
 
+      <section class="section section-white gallery-section" id="galerija">
+        <div class="shell">
+          ${renderSectionLabel(site.gallery.label)}
+          <div class="gallery-layout">
+            <div class="gallery-head">
+              <h2>${site.gallery.title}</h2>
+              <p class="lead">${site.gallery.copy}</p>
+            </div>
+            <div
+              class="gallery-carousel"
+              data-gallery
+              tabindex="0"
+              aria-roledescription="carousel"
+              aria-label="Galerija placeholdera za buduće fotografije"
+            >
+              <div class="gallery-toolbar">
+                <p class="gallery-counter"><span data-gallery-current>01</span><span>/ ${String(site.gallery.items.length).padStart(2, '0')}</span></p>
+                <div class="gallery-controls">
+                  <button type="button" class="gallery-control" data-gallery-prev aria-label="Prethodna fotografija">
+                    <span>Prethodna</span>
+                  </button>
+                  <button type="button" class="gallery-control" data-gallery-next aria-label="Sledeća fotografija">
+                    <span>Sledeća</span>
+                  </button>
+                </div>
+              </div>
+              <div class="gallery-viewport">
+                <div class="gallery-track" data-gallery-track>
+                  ${renderGallerySlides()}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section section-white" id="pitanja">
         <div class="shell faq-layout">
           <div class="faq-head">
@@ -311,7 +398,7 @@ export function renderHome(currentYear) {
           </div>
           <div>
             <span class="footer-label">INDEKS</span>
-            ${site.navItems.map(({ href, label }) => `<a href="${href}">${label}</a>`).join('')}
+            ${renderFooterNavLinks()}
           </div>
         </div>
         <div class="footer-meta">

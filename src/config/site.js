@@ -14,6 +14,7 @@ export const site = {
     { href: '#trening-uzivo', label: 'Trening uživo' },
     { href: '#online-coaching', label: 'Online coaching' },
     { href: '#aplikacija', label: 'Aplikacija' },
+    { href: '#galerija', label: 'Galerija', includeInFooter: false },
     { href: '#pitanja', label: 'Pitanja' },
     { href: '#kontakt', label: 'Kontakt' }
   ],
@@ -94,6 +95,53 @@ export const site = {
       'Personalizovan plan dostupan je u aplikaciji. Umesto nasumičnog izbora vežbi, sledeći korak je jasno postavljen.',
     note:
       'Javno je potvrđeno postojanje personalizovanog plana u aplikaciji. Dodatne funkcije nisu pretpostavljene niti izmišljene.'
+  },
+  gallery: {
+    label: '06 / GALERIJA',
+    title: 'Prostor za rad. Sistem u praksi.',
+    copy: 'Fotografije prostora i treninga biće dodate uskoro.',
+    items: [
+      {
+        id: 'gallery-01',
+        label: 'FOTOGRAFIJA 01',
+        placeholder: 'MESTO ZA FOTOGRAFIJU',
+        imagePath: null,
+        alt: '',
+        caption: ''
+      },
+      {
+        id: 'gallery-02',
+        label: 'FOTOGRAFIJA 02',
+        placeholder: 'MESTO ZA FOTOGRAFIJU',
+        imagePath: null,
+        alt: '',
+        caption: ''
+      },
+      {
+        id: 'gallery-03',
+        label: 'FOTOGRAFIJA 03',
+        placeholder: 'MESTO ZA FOTOGRAFIJU',
+        imagePath: null,
+        alt: '',
+        caption: ''
+      },
+      {
+        id: 'gallery-04',
+        label: 'FOTOGRAFIJA 04',
+        placeholder: 'MESTO ZA FOTOGRAFIJU',
+        imagePath: null,
+        alt: '',
+        caption: ''
+      },
+      {
+        id: 'gallery-05',
+        label: 'FOTOGRAFIJA 05',
+        placeholder: 'MESTO ZA FOTOGRAFIJU',
+        imagePath: null,
+        alt: '',
+        caption: ''
+      }
+    ]
   },
   faq: {
     label: 'PITANJA',

@@ -59,3 +59,62 @@ faqTriggers.forEach((trigger) => {
     }
   });
 });
+
+const galleryRoot = document.querySelector('[data-gallery]');
+
+if (galleryRoot) {
+  const galleryTrack = galleryRoot.querySelector('[data-gallery-track]');
+  const gallerySlides = galleryTrack ? [...galleryTrack.querySelectorAll('[data-gallery-slide]')] : [];
+  const previousButton = galleryRoot.querySelector('[data-gallery-prev]');
+  const nextButton = galleryRoot.querySelector('[data-gallery-next]');
+  const currentValue = galleryRoot.querySelector('[data-gallery-current]');
+  let activeIndex = 0;
+
+  const updateGallery = () => {
+    if (!galleryTrack || !previousButton || !nextButton || !currentValue) {
+      return;
+    }
+
+    galleryTrack.style.transform = `translateX(-${activeIndex * 100}%)`;
+    previousButton.disabled = activeIndex === 0;
+    nextButton.disabled = activeIndex === gallerySlides.length - 1;
+    currentValue.textContent = String(activeIndex + 1).padStart(2, '0');
+
+    gallerySlides.forEach((slide, index) => {
+      slide.setAttribute('aria-hidden', index === activeIndex ? 'false' : 'true');
+    });
+  };
+
+  const moveGallery = (direction) => {
+    const nextIndex = activeIndex + direction;
+
+    if (nextIndex < 0 || nextIndex >= gallerySlides.length) {
+      return;
+    }
+
+    activeIndex = nextIndex;
+    updateGallery();
+  };
+
+  previousButton?.addEventListener('click', () => {
+    moveGallery(-1);
+  });
+
+  nextButton?.addEventListener('click', () => {
+    moveGallery(1);
+  });
+
+  galleryRoot.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      moveGallery(-1);
+    }
+
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      moveGallery(1);
+    }
+  });
+
+  updateGallery();
+}
